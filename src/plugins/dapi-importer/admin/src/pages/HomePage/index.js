@@ -13,6 +13,7 @@ import {
   SubNavLink,
 } from "@strapi/design-system/SubNav";
 import Download from "../download/download";
+import Image from "../image/image";
 import ImportResource from "../import-resource/import-resource";
 
 const links = [
@@ -26,6 +27,11 @@ const links = [
     id: 2,
     label: "Files",
     to: `/plugins/${pluginId}/files`,
+  },
+  {
+    id: 2,
+    label: "Image",
+    to: `/plugins/${pluginId}/image`,
   },
 ];
 
@@ -59,6 +65,7 @@ const HomePage = () => {
         <Switch>
           <Route path={`${path}/data`} component={ImportResource} exact />
           <Route path={`${path}/files`} component={Download} exact />
+          <Route path={`${path}/image`} component={Image} exact />
           <Redirect to={`${path}/data`} />
         </Switch>
       </Layout>

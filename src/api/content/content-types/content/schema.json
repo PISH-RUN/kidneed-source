@@ -132,6 +132,18 @@
       "relation": "oneToMany",
       "target": "api::movie.movie",
       "mappedBy": "content"
+    },
+    "images": {
+      "allowedTypes": [
+        "images"
+      ],
+      "type": "media",
+      "multiple": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

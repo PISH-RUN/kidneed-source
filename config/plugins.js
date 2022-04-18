@@ -14,7 +14,7 @@ module.exports = ({ env }) => ({
     },
   },
   "dapi-importer": {
-    enabled: false,
+    enabled: true,
     resolve: "./src/plugins/dapi-importer",
   },
   "bulk-publisher": {

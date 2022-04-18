@@ -47,7 +47,9 @@ module.exports = {
             type: contentType,
             duration:
               contentType == "audio"
-                ? contents[contentType][Math.floor(i / 3) * 2]?.meta.chapters.reduce(
+                ? contents[contentType][
+                    Math.floor(i / 3) * 2
+                  ]?.meta.chapters.reduce(
                     (sum, item) => sum + item?.duration,
                     0
                   )

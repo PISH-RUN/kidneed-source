@@ -10,9 +10,7 @@ const createImportController = (importer, run) => ({
       const uid = modelUID(model);
       validateModelUID(uid);
 
-      const url = `https://dapi.kidneed.ir/dev/content/?format=json${
-        filter ? "&" + filter : ""
-      }`;
+      const url = `${importer.getURL()}${filter ? "&" + filter : ""}`;
 
       run(uid, url);
 

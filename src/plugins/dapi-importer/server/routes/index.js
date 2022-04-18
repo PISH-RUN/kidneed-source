@@ -24,4 +24,5 @@ const baseRoute = (prefix, controller) => [
 module.exports = [
   ...baseRoute("import", "importController"),
   ...baseRoute("download", "downloadController"),
+  ...baseRoute("image", "imageController"),
 ];
