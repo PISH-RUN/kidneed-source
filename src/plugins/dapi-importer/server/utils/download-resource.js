@@ -6,7 +6,6 @@ const tempFilePath = require("./temp-file-path");
 
 const downloadResource = async (url) => {
   const dest = tempFilePath(urlFilename(url));
-  console.log({ filename: urlFilename(url), dest, url });
   await download(url, dest);
 
   const stats = fs.statSync(dest);

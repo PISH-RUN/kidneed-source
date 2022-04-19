@@ -34,7 +34,6 @@ async function downloadImage(record, uid, content, importer) {
   }
 
   try {
-    console.log({ resource });
     await strapi
       .service(uid)
       .update(content.id, { files: { images: [resource] } });
