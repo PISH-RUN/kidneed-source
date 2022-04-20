@@ -10,7 +10,7 @@ const createImportController = (importer, run) => ({
       const uid = modelUID(model);
       validateModelUID(uid);
 
-      const url = `${importer.getURL()}${filter ? "&" + filter : ""}`;
+      const url = `${importer.getStartURL()}${filter ? "&" + filter : ""}`;
 
       run(uid, url);
 

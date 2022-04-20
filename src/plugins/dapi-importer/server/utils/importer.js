@@ -20,7 +20,6 @@ function Importer(url) {
     }
 
     if (url) {
-      status.startURL = url;
       status.currentURL = url;
     }
 
@@ -83,6 +82,10 @@ function Importer(url) {
     return status.currentURL;
   }
 
+  function getStartURL() {
+    return status.startURL;
+  }
+
   function setURL(url) {
     status.currentURL = url;
   }
@@ -100,6 +103,7 @@ function Importer(url) {
     persisted,
     get,
     getURL,
+    getStartURL,
     setURL,
     setTotal,
     finish,
