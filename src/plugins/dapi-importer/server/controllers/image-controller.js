@@ -7,12 +7,8 @@ const createImportController = require("./base-controller");
 const importer = Importer("https://dapi.kidneed.ir/gallery/?format=json");
 
 const runImporter = (uid, url) => {
-  try {
-    importer.run(uid, url);
-    records.loopRecords(uid, importer, imageHandler);
-  } catch (e) {
-    console.error(e);
-  }
+  importer.run(uid, url);
+  records.loopRecords(uid, importer, imageHandler);
 };
 
 module.exports = createImportController(importer, runImporter);
