@@ -105,20 +105,26 @@ const download = async (record, uid, importer) => {
 };
 
 const loopRecords = async (uid, importer, handler) => {
+  async function process(record) {
+    await handler(record, uid, importer);
+    importer.processed(record.uuid);
+  }
+
   try {
+    if (!importer.isRunning()) {
+      return;
+    }
+
     const response = await getResource(importer.getURL());
     importer.setTotal(response.count);
 
     const { results } = response;
 
     if (results && Array.isArray(results)) {
-      for (let i = 0; i < results.length; i++) {
-        if (!importer.isRunning()) {
-          return;
-        }
-        await handler(results[i], uid, importer);
-        importer.processed(results[i].uuid);
-      }
+      await results.reduce(async (acc, record) => {
+        await acc;
+        return process(record);
+      }, Promise.resolve());
     }
 
     if (response.next) {

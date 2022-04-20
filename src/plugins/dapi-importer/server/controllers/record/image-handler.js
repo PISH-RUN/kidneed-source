@@ -11,8 +11,9 @@ async function getContent(record, uid) {
 async function downloadImage(record, uid, content, importer) {
   let exists = false;
 
-  if (content.images?.length > 0)
+  if (content.images?.length > 0) {
     exists = content.images.some((image) => record.image.includes(image.name));
+  }
 
   if (exists) {
     importer.log("image exists", content.uuid, "error");
@@ -50,13 +51,21 @@ async function downloadImage(record, uid, content, importer) {
 }
 
 async function imageHandler(record, uid, importer) {
-  const content = await getContent(record, uid);
+  try {
+    const content = await getContent(record, uid);
 
-  if (!content) {
-    return;
+    if (!content) {
+      return;
+    }
+
+    await downloadImage(record, uid, content, importer);
+  } catch (e) {
+    importer.log(
+      "Error",
+      `something went wrong ${record.content}, message: ${e.message}`,
+      "error"
+    );
   }
-
-  await downloadImage(record, uid, content, importer);
 }
 
 module.exports = imageHandler;
