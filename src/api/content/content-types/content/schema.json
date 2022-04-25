@@ -134,11 +134,12 @@
       "mappedBy": "content"
     },
     "images": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images"
       ],
-      "type": "media",
-      "multiple": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
@@ -150,6 +151,14 @@
       "relation": "oneToOne",
       "target": "api::entity.entity",
       "inversedBy": "content"
+    },
+    "maxAge": {
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "type": "integer"
     }
   }
 }

@@ -1,6 +1,7 @@
 "use strict";
 
 const syncContentEntity = require("./bootstrap/content-entity-sync");
+const fixMaxAge = require("./bootstrap/fix-max-age");
 
 module.exports = {
   /**
@@ -20,5 +21,6 @@ module.exports = {
    */
   async bootstrap({ strapi }) {
     await syncContentEntity(strapi);
+    await fixMaxAge(strapi);
   },
 };
