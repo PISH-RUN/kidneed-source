@@ -144,6 +144,12 @@
           "localized": true
         }
       }
+    },
+    "entity": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::entity.entity",
+      "inversedBy": "content"
     }
   }
 }

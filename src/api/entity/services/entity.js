@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * task service.
+ * entity service.
  */
 
 const { createCoreService } = require('@strapi/strapi').factories;
 
-module.exports = createCoreService('api::task.task');
+module.exports = createCoreService('api::entity.entity');

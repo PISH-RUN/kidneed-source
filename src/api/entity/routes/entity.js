@@ -1,9 +1,9 @@
 'use strict';
 
 /**
- * task router.
+ * entity router.
  */
 
 const { createCoreRouter } = require('@strapi/strapi').factories;
 
-module.exports = createCoreRouter('api::task.task');
+module.exports = createCoreRouter('api::entity.entity');
