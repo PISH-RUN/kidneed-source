@@ -63,14 +63,20 @@
       "inversedBy": "users",
       "configurable": false
     },
-    "entities": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::entity.entity",
-      "mappedBy": "assignee"
-    },
     "name": {
       "type": "string"
+    },
+    "tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::task.task",
+      "mappedBy": "user"
+    },
+    "editions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::edition.edition",
+      "mappedBy": "user"
     }
   }
 }

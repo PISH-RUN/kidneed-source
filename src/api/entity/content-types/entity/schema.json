@@ -46,11 +46,11 @@
       "target": "api::content.content",
       "mappedBy": "entity"
     },
-    "assignee": {
+    "tasks": {
       "type": "relation",
-      "relation": "manyToOne",
-      "target": "plugin::users-permissions.user",
-      "inversedBy": "entities"
+      "relation": "oneToMany",
+      "target": "api::task.task",
+      "mappedBy": "entity"
     }
   }
 }
