@@ -1,6 +1,7 @@
 const routes = require("./routes/routes");
 const entitiyController = require("./controllers/entitiy-controller");
 const extendedService = require("./services/extended");
+const userController = require("./controllers/user-controller");
 
 module.exports = (plugin) => {
   modifyControllers(plugin);
@@ -13,6 +14,10 @@ module.exports = (plugin) => {
 };
 
 function modifyControllers(plugin) {
+  plugin.controllers.user = userController.overwrite({
+    ...plugin.controllers.user,
+  });
+
   plugin.controllers.entity = entitiyController;
 }
 
