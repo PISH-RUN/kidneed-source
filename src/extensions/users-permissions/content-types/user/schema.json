@@ -68,6 +68,9 @@
       "relation": "oneToMany",
       "target": "api::entity.entity",
       "mappedBy": "assignee"
+    },
+    "name": {
+      "type": "string"
     }
   }
 }
