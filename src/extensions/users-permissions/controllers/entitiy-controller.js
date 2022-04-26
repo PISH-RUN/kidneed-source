@@ -1,7 +1,5 @@
 "use strict";
 
-const merge = require("lodash/merge");
-
 const EnQuery = () => strapi.query("api::entity.entity");
 
 module.exports = {
