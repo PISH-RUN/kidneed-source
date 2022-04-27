@@ -2,7 +2,7 @@
 
 async function syncContentEntity(strapi) {
   const unsyncedContents = await strapi.query("api::content.content").findMany({
-    where: { entity: null, publishedAt: { $notNull: true } },
+    where: { $and: { entity: null, publishedAt: { $notNull: true } } },
   });
 
   await unsyncedContents.reduce(async (acc, content) => {

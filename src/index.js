@@ -3,6 +3,7 @@
 const syncContentEntity = require("./bootstrap/content-entity-sync");
 const fixMaxAge = require("./bootstrap/fix-max-age");
 const mergeGames = require("./bootstrap/merge-games");
+const removeDuplicateEntity = require("./bootstrap/remove-duplicate-entity");
 
 module.exports = {
   /**
@@ -21,8 +22,9 @@ module.exports = {
    * run jobs, or perform some special logic.
    */
   async bootstrap({ strapi }) {
+    await removeDuplicateEntity(strapi);
     await syncContentEntity(strapi);
-    await fixMaxAge(strapi);
+    // await fixMaxAge(strapi);
     await mergeGames(strapi);
   },
 };
