@@ -36,7 +36,7 @@
       "type": "string",
       "required": false
     },
-    "age": {
+    "minAge": {
       "type": "integer",
       "required": true
     },
@@ -51,6 +51,10 @@
       "relation": "oneToMany",
       "target": "api::task.task",
       "mappedBy": "entity"
+    },
+    "maxAge": {
+      "type": "integer",
+      "required": true
     }
   }
 }

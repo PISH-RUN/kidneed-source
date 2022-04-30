@@ -7,7 +7,8 @@ module.exports = ({ strapi }) => ({
     await strapi.service("api::entity.entity").create({
       data: {
         ...pick(content, ["title", "description", "meta", "sourceUrl"]),
-        age: content.ageCategory || 0,
+        minAge: content.ageCategory || 0,
+        maxAge: content.maxAge || 11,
         gender: content.suitableFor || "both",
         content: content.id,
       },

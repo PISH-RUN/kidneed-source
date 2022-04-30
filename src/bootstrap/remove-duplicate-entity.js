@@ -2,7 +2,13 @@ async function removeDuplicateEntity(strapi) {
   const eQuery = strapi.query("api::entity.entity");
 
   const entities = await eQuery.findMany({
-    where: { content: null },
+    where: {
+      $or: [
+        { content: null },
+        { minAge: { $null: true } },
+        { maxAge: { $null: true } },
+      ],
+    },
     select: ["id"],
   });
 
@@ -10,7 +16,6 @@ async function removeDuplicateEntity(strapi) {
     return;
   }
 
-  console.log({ entities });
   const ids = entities.map((e) => e.id);
 
   await eQuery.deleteMany({ where: { id: { $in: ids } } });
