@@ -33,11 +33,11 @@ module.exports = ({ strapi }) => ({
       populate: { content: { select: "meta" } },
     });
 
-    return entities
-      .map((e) => ({
-        id: e.id,
-        duration: e.content.meta?.duration,
-      }))
-      .filter((e) => e.duration);
+    return entities.reduce((acc, curr) => {
+      const duration = curr.content.meta?.duration;
+      if (duration) {
+        return { ...acc, [curr.id]: duration };
+      }
+    }, {});
   },
 });

@@ -41,7 +41,7 @@ module.exports = {
 
     const durations = await strapi
       .service("api::entity.extended")
-      .duration(result["game"]);
+      .duration(result["video"]);
 
     return { data: result, duration: durations };
   },
