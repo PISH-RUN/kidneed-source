@@ -22,4 +22,22 @@ module.exports = ({ strapi }) => ({
       },
     });
   },
+  async duration(entityIds) {
+    if (!entityIds) {
+      return [];
+    }
+
+    const entities = await strapi.query("api::entity.entity").findMany({
+      where: { id: { $in: entityIds } },
+      select: ["id"],
+      populate: { content: { select: "meta" } },
+    });
+
+    return entities
+      .map((e) => ({
+        id: e.id,
+        duration: e.content.meta?.duration,
+      }))
+      .filter((e) => e.duration);
+  },
 });
