@@ -52,7 +52,10 @@ module.exports = ({ strapi }) => ({
 
     if (records.length <= count) {
       // if our entities is less than requested one, we need to return repeated results randomly
-      return [...records, ..._.sampleSize(records, count - records.length)];
+      return selectedNormalize([
+        ...records,
+        ..._.sampleSize(records, count - records.length),
+      ]);
     }
 
     const minorFields = _.without(fields, field);
