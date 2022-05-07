@@ -39,10 +39,6 @@ module.exports = {
       return await getEntities(createPayload(baseProps, entity));
     }
 
-    const durations = await strapi
-      .service("api::entity.extended")
-      .duration(result["video"]);
-
-    return { data: result, duration: durations };
+    return { data: result };
   },
 };

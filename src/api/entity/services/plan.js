@@ -70,26 +70,26 @@ module.exports = ({ strapi }) => ({
       _.sampleSize(strictDistributedRecords[i], d)
     );
 
-    const remaindedRecords = _.differenceBy(
+    const remainedRecords = _.differenceBy(
       recordsWithEdition,
       _.flatten(selected),
       "id"
     );
 
-    let remaindedDistribution = distribution.map((d, i) =>
+    let remainedDistribution = distribution.map((d, i) =>
       Math.max(0, d - selected[i].length)
     );
 
-    if (Math.max(...remaindedDistribution) < 1) {
+    if (Math.max(...remainedDistribution) < 1) {
       return selectedNormalize(selected);
     }
 
     let softDistributedRecords = batchFilter(
-      remaindedRecords,
+      remainedRecords,
       [field, ...minorFields].map(softFieldPredicator)
     );
 
-    let tempDist = [...remaindedDistribution].sort((a, b) => a - b);
+    let tempDist = [...remainedDistribution].sort((a, b) => a - b);
     while (tempDist.length > 0) {
       const min = tempDist[0];
       tempDist = tempDist.slice(1);
@@ -98,7 +98,7 @@ module.exports = ({ strapi }) => ({
         continue;
       }
 
-      const index = remaindedDistribution.indexOf(min);
+      const index = remainedDistribution.indexOf(min);
 
       if (softDistributedRecords[index].length < 1) {
         continue;
@@ -106,7 +106,7 @@ module.exports = ({ strapi }) => ({
 
       const nominated = _.sampleSize(
         softDistributedRecords[index],
-        remaindedDistribution[index]
+        remainedDistribution[index]
       );
 
       selected[index].push(...nominated);
