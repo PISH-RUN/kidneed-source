@@ -1,8 +1,15 @@
 async function videoSourceUrl(strapi) {
   const entities = await strapi.query("api::entity.entity").findMany({
     where: {
-      content: { type: "video" },
-      sourceUrl: { $notContains: "telewebion" },
+      $and: [
+        { content: { type: "video" } },
+        {
+          $or: [
+            { sourceUrl: { $notContains: "telewebion" } },
+            { sourceUrl: { $null: true } },
+          ],
+        },
+      ],
     },
     select: ["id"],
     populate: { content: { select: "meta" } },
