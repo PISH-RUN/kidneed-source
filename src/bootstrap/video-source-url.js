@@ -5,7 +5,7 @@ async function videoSourceUrl(strapi) {
         { content: { type: "video" } },
         {
           $or: [
-            { sourceUrl: { $notContains: "telewebion" } },
+            { sourceUrl: { $notContains: "play.filmgardi.com" } },
             { sourceUrl: { $null: true } },
           ],
         },
@@ -23,12 +23,13 @@ async function videoSourceUrl(strapi) {
   console.log(`${entities.length} source url has been updated`);
 
   async function updateEntity(entity) {
-    if (!entity.content.meta?.source?.[0]?.src) {
+    let src = entity.content.meta?.source?.[0]?.src;
+    if (!src) {
       return;
     }
 
     await strapi.service("api::entity.entity").update(entity.id, {
-      data: { sourceUrl: entity.content.meta?.source?.[0]?.src },
+      data: { sourceUrl: src.replace("telewebion", "filmgardi") },
     });
   }
 }
