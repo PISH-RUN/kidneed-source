@@ -13,9 +13,9 @@ function createPayload(base, extra) {
 const types = (days) => [
   { type: "video", count: days * 2 },
   { type: "activity", count: days * 2 },
-  { type: "book", count: days },
-  { type: "audio", count: days },
-  { type: "game", count: days },
+  { type: "book", count: 2 * Math.ceil((days - 1) / 3) },
+  { type: "audio", count: 2 * Math.ceil((days - 1) / 3) },
+  { type: "game", count: 2 * Math.ceil((days - 1) / 3) },
 ];
 
 module.exports = {
