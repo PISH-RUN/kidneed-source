@@ -27,7 +27,7 @@ module.exports = {
     await removeDuplicateEntity(strapi);
     await syncContentEntity(strapi);
     // await fixMaxAge(strapi);
-    await mergeGames(strapi);
+    // await mergeGames(strapi);
     await videoSourceUrl(strapi);
     await entityType(strapi);
   },
