@@ -5,6 +5,7 @@ const fixMaxAge = require("./bootstrap/fix-max-age");
 const mergeGames = require("./bootstrap/merge-games");
 const removeDuplicateEntity = require("./bootstrap/remove-duplicate-entity");
 const videoSourceUrl = require("./bootstrap/video-source-url");
+const entityType = require("./bootstrap/entity-type");
 
 module.exports = {
   /**
@@ -28,5 +29,6 @@ module.exports = {
     // await fixMaxAge(strapi);
     await mergeGames(strapi);
     await videoSourceUrl(strapi);
+    await entityType(strapi);
   },
 };

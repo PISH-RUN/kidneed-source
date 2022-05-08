@@ -55,6 +55,19 @@
     "maxAge": {
       "type": "integer",
       "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "animation",
+        "activity",
+        "audio",
+        "book",
+        "game",
+        "website",
+        "video"
+      ],
+      "required": true
     }
   }
 }
