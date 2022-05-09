@@ -6,6 +6,7 @@ const mergeGames = require("./bootstrap/merge-games");
 const removeDuplicateEntity = require("./bootstrap/remove-duplicate-entity");
 const videoSourceUrl = require("./bootstrap/video-source-url");
 const entityType = require("./bootstrap/entity-type");
+const fixGames = require("./bootstrap/fix-games");
 
 module.exports = {
   /**
@@ -30,5 +31,6 @@ module.exports = {
     // await mergeGames(strapi);
     await videoSourceUrl(strapi);
     await entityType(strapi);
+    await fixGames(strapi);
   },
 };
