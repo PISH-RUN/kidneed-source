@@ -77,6 +77,12 @@
       "relation": "oneToMany",
       "target": "api::edition.edition",
       "mappedBy": "user"
+    },
+    "movies": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::movie.movie",
+      "mappedBy": "user"
     }
   }
 }
