@@ -1,5 +1,5 @@
 const routes = require("./routes/routes");
-const entitiyController = require("./controllers/entitiy-controller");
+const contentController = require("./controllers/content-controller");
 const extendedService = require("./services/extended");
 const userController = require("./controllers/user-controller");
 
@@ -18,7 +18,7 @@ function modifyControllers(plugin) {
     ...plugin.controllers.user,
   });
 
-  plugin.controllers.entity = entitiyController;
+  plugin.controllers.content = contentController;
 }
 
 function modifyRoutes(plugin) {

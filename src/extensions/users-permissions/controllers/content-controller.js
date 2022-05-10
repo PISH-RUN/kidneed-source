@@ -1,6 +1,6 @@
 "use strict";
 
-const EnQuery = () => strapi.query("api::entity.entity");
+const CQuery = () => strapi.query("api::content.content");
 const taskQuery = () => strapi.query("api::task.task");
 const taskService = () => strapi.service("api::task.task");
 
@@ -14,21 +14,21 @@ module.exports = {
     const { id: userId } = params;
     const { field } = body.data;
 
-    const entities = await EnQuery().findMany({
+    const contents = await CQuery().findMany({
       where: query.filters,
       select: ["id"],
     });
 
-    const entitiesId = entities.map((e) => e.id);
+    const contentsId = contents.map((c) => c.id);
 
     const tasks = [];
-    await entitiesId.reduce(async (acc, entity) => {
+    await contentsId.reduce(async (acc, content) => {
       await acc;
-      return createTask(entity);
+      return createTask(content);
     }, Promise.resolve());
 
-    async function createTask(entity) {
-      const data = { user: userId, entity, field };
+    async function createTask(content) {
+      const data = { user: userId, content, field };
       let task = await getTask(data);
 
       if (!task) {

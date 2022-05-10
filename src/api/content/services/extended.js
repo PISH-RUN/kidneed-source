@@ -1,16 +1,21 @@
 "use strict";
 
-const pick = require("lodash/pick");
+const cQuery = (strapi) => strapi.query("api::content.content");
 
 module.exports = ({ strapi }) => ({
-  async createEntity(content) {
-    await strapi.service("api::entity.entity").create({
-      data: {
-        ...pick(content, ["title", "description", "meta", "sourceUrl", "type"]),
-        minAge: content.ageCategory || 0,
-        maxAge: content.maxAge || 11,
-        gender: content.suitableFor || "both",
-        content: content.id,
+  async pool({ type, age, gender }, options) {
+    return await cQuery(strapi).findMany({
+      where: {
+        $and: [
+          { type },
+          { ageCategory: { $lte: age } },
+          { maxAge: { $gte: age } },
+          { suitableFor: { $in: [gender, "both"] } },
+        ],
+      },
+      select: ["id"],
+      populate: {
+        editions: { select: ["tag"] },
       },
     });
   },

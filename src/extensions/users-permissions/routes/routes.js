@@ -3,8 +3,8 @@ module.exports = {
   unshift: [
     {
       method: "POST",
-      path: "/users/:id/entities",
-      handler: "entity.assign",
+      path: "/users/:id/contents",
+      handler: "content.assign",
       config: {
         prefix: "",
       },

@@ -3,7 +3,7 @@
 const { validatePlanGeneration } = require("./validations");
 
 async function getEntities(payload) {
-  return await strapi.service("api::entity.plan").generate(payload);
+  return await strapi.service("api::content.plan").generate(payload);
 }
 
 function createPayload(base, extra) {

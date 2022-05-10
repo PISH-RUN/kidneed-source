@@ -12,12 +12,6 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "entity": {
-      "type": "relation",
-      "relation": "manyToOne",
-      "target": "api::entity.entity",
-      "inversedBy": "tasks"
-    },
     "user": {
       "type": "relation",
       "relation": "manyToOne",
@@ -43,6 +37,12 @@
       ],
       "default": "created",
       "required": true
+    },
+    "content": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::content.content",
+      "inversedBy": "tasks"
     }
   }
 }

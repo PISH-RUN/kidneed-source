@@ -2,6 +2,8 @@
 
 const _ = require("lodash");
 
+const cEService = (strapi) => strapi.service("api::content.extended");
+
 function batchFilter(array, predicates) {
   if (!Array.isArray(predicates)) {
     predicates = [predicates];
@@ -20,7 +22,7 @@ function batchFilter(array, predicates) {
 }
 
 function strictFieldPredicator(field) {
-  return ({ content: { editions } }) => {
+  return ({ editions }) => {
     const matchedEditions = editions.filter(
       (e) => e.tag.toLowerCase() === field.toLowerCase()
     );
@@ -29,7 +31,7 @@ function strictFieldPredicator(field) {
 }
 
 function softFieldPredicator(field) {
-  return ({ content: { editions } }) =>
+  return ({ editions }) =>
     editions.find((e) => e.tag.toLowerCase() === field.toLowerCase());
 }
 
@@ -46,9 +48,7 @@ module.exports = ({ strapi }) => ({
   async generate({ age, type, gender, count, field, fields }) {
     const distribution = getDistribution(count);
 
-    const records = await strapi
-      .service("api::entity.extended")
-      .pool({ type, age, gender });
+    const records = await cEService(strapi).pool({ type, age, gender });
 
     if (records.length <= count) {
       // if our entities is less than requested one, we need to return repeated results randomly
@@ -60,9 +60,7 @@ module.exports = ({ strapi }) => ({
 
     const minorFields = _.without(fields, field);
 
-    const recordsWithEdition = records.filter(
-      (r) => r.content.editions.length > 0
-    );
+    const recordsWithEdition = records.filter((r) => r.editions.length > 0);
 
     const strictDistributedRecords = batchFilter(
       recordsWithEdition,

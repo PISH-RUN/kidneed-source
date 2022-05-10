@@ -146,12 +146,6 @@
         }
       }
     },
-    "entity": {
-      "type": "relation",
-      "relation": "oneToOne",
-      "target": "api::entity.entity",
-      "inversedBy": "content"
-    },
     "maxAge": {
       "pluginOptions": {
         "i18n": {
@@ -159,6 +153,12 @@
         }
       },
       "type": "integer"
+    },
+    "tasks": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::task.task",
+      "mappedBy": "content"
     }
   }
 }
