@@ -83,6 +83,12 @@
       "relation": "oneToMany",
       "target": "api::movie.movie",
       "mappedBy": "user"
+    },
+    "contentTags": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::content-tag.content-tag",
+      "mappedBy": "user"
     }
   }
 }

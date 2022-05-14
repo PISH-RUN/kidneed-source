@@ -1,10 +1,10 @@
 {
   "kind": "collectionType",
-  "collectionName": "movies",
+  "collectionName": "content_tags",
   "info": {
-    "singularName": "movie",
-    "pluralName": "movies",
-    "displayName": "movie",
+    "singularName": "content-tag",
+    "pluralName": "content-tags",
+    "displayName": "content-tag",
     "description": ""
   },
   "options": {
@@ -12,11 +12,16 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "time": {
-      "type": "integer"
-    },
     "body": {
-      "type": "text"
+      "type": "text",
+      "required": false
+    },
+    "time": {
+      "type": "integer",
+      "required": true
+    },
+    "tagger": {
+      "type": "string"
     },
     "payload": {
       "type": "json"
@@ -25,22 +30,19 @@
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::content.content",
-      "inversedBy": "movies"
+      "inversedBy": "content_tags"
     },
     "tags": {
       "type": "relation",
       "relation": "manyToMany",
       "target": "api::tag.tag",
-      "inversedBy": "movies"
-    },
-    "tagger": {
-      "type": "string"
+      "inversedBy": "contentTags"
     },
     "user": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "plugin::users-permissions.user",
-      "inversedBy": "movies"
+      "inversedBy": "contentTags"
     }
   }
 }
