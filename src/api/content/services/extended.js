@@ -11,6 +11,7 @@ module.exports = ({ strapi }) => ({
           { ageCategory: { $lte: age } },
           { maxAge: { $gte: age } },
           { suitableFor: { $in: [gender, "both"] } },
+          { publishedAt: { $notNull: true } },
         ],
       },
       select: ["id"],
