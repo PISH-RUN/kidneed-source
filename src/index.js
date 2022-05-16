@@ -8,7 +8,6 @@ module.exports = {
   register(/*{ strapi }*/) {},
 
   async bootstrap({ strapi }) {
-    await strapi.query("api::task.task").deleteMany();
     await fixMaxAge(strapi);
     await fixVideoSourceUrl(strapi);
     await fixGameSourceUrl(strapi);
