@@ -165,6 +165,12 @@
       "relation": "oneToMany",
       "target": "api::content-tag.content-tag",
       "mappedBy": "content"
+    },
+    "contentEditions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::content-edition.content-edition",
+      "mappedBy": "content"
     }
   }
 }

@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "content_editions",
+  "info": {
+    "singularName": "content-edition",
+    "pluralName": "content-editions",
+    "displayName": "content-edition"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "snapshot": {
+      "type": "json"
+    },
+    "payload": {
+      "type": "json"
+    },
+    "acceptedAt": {
+      "type": "datetime"
+    },
+    "content": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::content.content",
+      "inversedBy": "contentEditions"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "contentEditions"
+    }
+  }
+}
