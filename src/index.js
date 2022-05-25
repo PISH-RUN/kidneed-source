@@ -13,7 +13,7 @@ module.exports = {
     await fixMaxAge(strapi);
     await fixVideoSourceUrl(strapi);
     await fixGameSourceUrl(strapi);
-    await acceptEditions(strapi);
+    // await acceptEditions(strapi);
 
     // syncPosters(strapi);
   },
