@@ -16,7 +16,7 @@ module.exports = ({ strapi }) => ({
       },
       select: ["id"],
       populate: {
-        editions: { select: ["tag"] },
+        editions: { where: { accepted: true }, select: ["tag"] },
       },
     });
   },
