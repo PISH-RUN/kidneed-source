@@ -43,6 +43,18 @@
       "relation": "manyToOne",
       "target": "api::content.content",
       "inversedBy": "tasks"
+    },
+    "contentEdition": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::content-edition.content-edition",
+      "inversedBy": "task"
+    },
+    "edition": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::edition.edition",
+      "inversedBy": "task"
     }
   }
 }

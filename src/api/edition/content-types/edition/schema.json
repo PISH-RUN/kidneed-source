@@ -57,6 +57,12 @@
     },
     "accepted": {
       "type": "boolean"
+    },
+    "task": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::task.task",
+      "inversedBy": "edition"
     }
   }
 }
