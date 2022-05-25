@@ -13,7 +13,7 @@ module.exports = {
     await fixVideoSourceUrl(strapi);
     await fixGameSourceUrl(strapi);
 
-    syncPosters(strapi);
+    // syncPosters(strapi);
   },
 };
 
