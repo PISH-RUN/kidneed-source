@@ -33,7 +33,8 @@
       "enum": [
         "created",
         "progress",
-        "done"
+        "done",
+        "improper"
       ],
       "default": "created",
       "required": true
