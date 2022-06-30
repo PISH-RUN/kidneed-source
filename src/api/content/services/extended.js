@@ -20,4 +20,22 @@ module.exports = ({ strapi }) => ({
       },
     });
   },
+
+  async duration(contentIds) {
+    if (!contentIds) {
+      return [];
+    }
+
+    const contents = await strapi.query("api::content.content").findMany({
+      where: { id: { $in: contentIds } },
+      select: ["id", "meta"],
+    });
+
+    return contents
+      .map((content) => ({
+        id: content.id,
+        duration: content.meta?.duration,
+      }))
+      .filter((e) => e.duration);
+  },
 });
