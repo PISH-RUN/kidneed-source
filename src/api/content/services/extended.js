@@ -36,6 +36,10 @@ module.exports = ({ strapi }) => ({
         id: content.id,
         duration: content.meta?.duration,
       }))
-      .filter((e) => e.duration);
+      .filter((e) => e.duration)
+      .reduce(
+        (obj, content) => ({ ...obj, [content.id]: content.duration }),
+        {}
+      );
   },
 });
