@@ -21,25 +21,39 @@ module.exports = ({ strapi }) => ({
     });
   },
 
-  async duration(contentIds) {
+  async duration(result, types) {
+    const contentIds = types.reduce(
+      (ids, type) => [...ids, ...result[type]],
+      []
+    );
+
     if (!contentIds) {
       return [];
     }
 
     const contents = await strapi.query("api::content.content").findMany({
       where: { id: { $in: contentIds } },
-      select: ["id", "meta"],
+      select: ["id", "type", "meta"],
     });
 
     return contents
       .map((content) => ({
         id: content.id,
-        duration: content.meta?.duration,
+        duration: getDuration(content),
       }))
       .filter((e) => e.duration)
       .reduce(
         (obj, content) => ({ ...obj, [content.id]: content.duration }),
         {}
       );
+
+    function getDuration(content) {
+      if (type === "video") {
+        return content.meta?.duration;
+      }
+      if (type === "audio") {
+        return content.meta?.chapters?.[0]?.duration;
+      }
+    }
   },
 });
