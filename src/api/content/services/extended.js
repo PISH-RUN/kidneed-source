@@ -48,10 +48,10 @@ module.exports = ({ strapi }) => ({
       );
 
     function getDuration(content) {
-      if (type === "video") {
+      if (content.type === "video") {
         return content.meta?.duration;
       }
-      if (type === "audio") {
+      if (content.type === "audio") {
         return content.meta?.chapters?.[0]?.duration;
       }
     }
