@@ -12,7 +12,8 @@ async function updateVideoAge(strapi) {
   });
 
   for (let content of contents) {
-    let age = content.meta["age"];
+    console.log(`Updating ${content.id} age...`);
+    let age = content.meta?.["age"];
 
     if (age === undefined) {
       continue;
