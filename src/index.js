@@ -15,7 +15,7 @@ module.exports = {
     // await fixVideoSourceUrl(strapi);
     // await fixGameSourceUrl(strapi);
     // await acceptEditions(strapi);
-    await updateVideoAge(strapi);
+    // await updateVideoAge(strapi);
     // syncPosters(strapi);
   },
 };
